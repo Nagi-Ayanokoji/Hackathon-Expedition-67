@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión / Crear Cuenta — HambreZero</title>
+  <meta name="description" content="Accede a HambreZero como entidad con necesidades, empresa donante o zona geográfica.">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { background: var(--cream); min-height: 100vh; display: flex; flex-direction: column; }
+
+    .auth-page {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    /* Left panel */
+    .auth-left {
+      background: linear-gradient(145deg, #051f17 0%, #0a3526 40%, #116644 80%, #1a7a5e 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(240,165,0,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 85%, rgba(92,212,157,0.1) 0%, transparent 50%);
+    }
+    .auth-left-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .auth-logo {
+      display: flex; align-items: center; gap: var(--space-sm);
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; color: white;
+      margin-bottom: var(--space-3xl);
+    }
+    .auth-logo .logo-icon {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .auth-logo span { color: var(--gold-300); }
+    .auth-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 900;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: var(--space-lg);
+    }
+    .auth-left h2 em { color: var(--gold-300); font-style: normal; }
+    .auth-left-desc { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: var(--space-2xl); }
+    .auth-left-stats {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+    .auth-stat {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      text-align: center;
+    }
+    .auth-stat-num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--gold-300); }
+    .auth-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.65); margin-top: 2px; }
+    .auth-testimonial {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      margin-top: var(--space-xl);
+      position: relative;
+    }
+    .auth-testimonial::before { content: '"'; font-size: 4rem; color: var(--gold-400); position: absolute; top: -10px; left: 16px; font-family: Georgia, serif; line-height: 1; }
+    .auth-testimonial-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.7; padding-top: 8px; }
+    .auth-testimonial-author { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: var(--space-sm); }
+
+    /* Right panel */
+    .auth-right {
+      background: white;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: var(--space-2xl);
+      overflow-y: auto;
+    }
+    .auth-form-wrap { width: 100%; max-width: 480px; padding: var(--space-xl) 0; }
+
+    /* Mode toggle */
+    .auth-mode-toggle {
+      display: flex;
+      background: var(--gray-100);
+      border-radius: var(--radius-full);
+      padding: 4px;
+      margin-bottom: var(--space-2xl);
+      gap: 4px;
+    }
+    .auth-mode-btn {
+      flex: 1; padding: 0.6rem; border-radius: var(--radius-full);
+      font-size: 0.9rem; font-weight: 600; color: var(--gray-600);
+      cursor: pointer; border: none; background: none;
+      transition: var(--transition-base); text-align: center;
+    }
+    .auth-mode-btn.active { background: white; color: var(--green-700); box-shadow: var(--shadow-sm); }
+
+    .auth-form-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 800; color: var(--text); margin-bottom: var(--space-xs); }
+    .auth-form-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-xl); }
+
+    /* Account type selector */
+    .auth-type-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-bottom: var(--space-xl); }
+    .auth-type-card {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) var(--space-sm);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      background: white;
+    }
+    .auth-type-card:hover { border-color: var(--green-400); background: var(--green-50); }
+    .auth-type-card.selected { border-color: var(--green-600); background: var(--green-50); }
+    .auth-type-card-icon { font-size: 1.75rem; margin-bottom: 6px; display: block; }
+    .auth-type-card-title { font-size: 0.78rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+    .form-divider { display: flex; align-items: center; gap: var(--space-md); margin: var(--space-xl) 0; }
+    .form-divider::before, .form-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .form-divider span { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+
+    .social-auth { display: flex; gap: var(--space-md); }
+    .social-auth-btn {
+      flex: 1; padding: 0.65rem; border: 2px solid var(--border); border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 0.85rem; font-weight: 600; color: var(--gray-700);
+      cursor: pointer; background: white; transition: var(--transition-base);
+    }
+    .social-auth-btn:hover { background: var(--gray-50); border-color: var(--gray-400); }
+
+    #extra-fields { display: flex; flex-direction: column; gap: var(--space-md); }
+
+    .password-wrap { position: relative; }
+    .password-wrap .form-control { padding-right: 2.75rem; }
+    .password-toggle { position: absolute; right: 0.875rem; top: 50%; transform: translateY(-50%); color: var(--gray-400); cursor: pointer; background: none; border: none; padding: 0; }
+
+    .form-check { display: flex; align-items: flex-start; gap: var(--space-sm); }
+    .form-check input[type="checkbox"] { margin-top: 3px; cursor: pointer; accent-color: var(--green-600); }
+    .form-check label { font-size: 0.85rem; color: var(--text-muted); cursor: pointer; }
+    .form-check a { color: var(--green-600); font-weight: 600; }
+
+    .forgot-link { font-size: 0.85rem; color: var(--green-600); font-weight: 600; }
+    .forgot-link:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .auth-page { grid-template-columns: 1fr; }
+      .auth-left { display: none; }
+      .auth-right { padding: var(--space-lg); align-items: flex-start; min-height: 100vh; }
+      .auth-form-wrap { padding: var(--space-lg) 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="toast-container" class="toast-container"></div>
+<div id="page-loader">
+  <div class="loader-logo"><div class="loader-spinner"></div>HambreZero</div>
+</div>
+
+<div class="auth-page">
+  <!-- ═══ LEFT PANEL ════════════════════════════════ -->
+  <div class="auth-left">
+    <div class="auth-left-content">
+      <div class="auth-logo">
+        <div class="logo-icon"><i class="fas fa-seedling"></i></div>
+        Hambre<span>Zero</span>
+      </div>
+      <h2>Juntos construimos<br>una Colombia <em>más justa</em></h2>
+      <p class="auth-left-desc">
+        Conectamos entidades con necesidades reales, empresas con vocación de impacto y zonas rurales que merecen ser vistas.
+      </p>
+      <div class="auth-left-stats">
+        <div class="auth-stat">
+          <div class="auth-stat-num">1,248</div>
+          <div class="auth-stat-label">Entidades</div>
+        </div>
+        <div class="auth-stat">
+          <div class="auth-stat-num">342</div>
+          <div class="auth-stat-label">Empresas</div>
+        </div>
+        <div class="auth-stat">
+          <div class="auth-stat-num">97</div>
+          <div class="auth-stat-label">Zonas activas</div>
+        </div>
+      </div>
+      <div class="auth-testimonial">
+        <p class="auth-testimonial-text">
+          Gracias a HambreZero conseguimos los materiales que nuestros 240 estudiantes necesitaban para empezar el año escolar. En menos de una semana teníamos tres empresas dispuestas a ayudarnos.
+        </p>
+        <div class="auth-testimonial-author">— Rectora, Colegio Rural San Francisco, Cundinamarca</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ RIGHT PANEL ═══════════════════════════════ -->
+  <div class="auth-right">
+    <div class="auth-form-wrap">
+      <div style="display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-xl)">
+        <a href="../index.html" class="btn btn-ghost btn-sm btn-icon" title="Volver al inicio">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <span style="font-size:0.85rem;color:var(--text-muted)">Volver al inicio</span>
+      </div>
+
+      <!-- Mode Toggle -->
+      <div class="auth-mode-toggle">
+        <button class="auth-mode-btn" id="mode-login" data-mode="login">
+          <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+        </button>
+        <button class="auth-mode-btn" id="mode-register" data-mode="register">
+          <i class="fas fa-user-plus"></i> Crear cuenta
+        </button>
+      </div>
+
+      <h1 class="auth-form-title" id="form-main-title">Bienvenido de vuelta</h1>
+      <p class="auth-form-sub">Accede a tu cuenta para gestionar donaciones y necesidades</p>
+
+      <!-- ─── ACCOUNT TYPE SELECTOR (solo en registro) ─ -->
+      <div id="type-selector-wrap" style="display:none">
+        <div style="font-size:0.875rem;font-weight:700;color:var(--gray-700);margin-bottom:var(--space-sm)">
+          Selecciona tu tipo de cuenta *
+        </div>
+        <div class="auth-type-selector">
+          <div class="auth-type-card" data-type="entity">
+            <span class="auth-type-card-icon">🏛️</span>
+            <div class="auth-type-card-title">Entidad con necesidades</div>
+          </div>
+          <div class="auth-type-card" data-type="donor">
+            <span class="auth-type-card-icon">🏢</span>
+            <div class="auth-type-card-title">Empresa donante</div>
+          </div>
+          <div class="auth-type-card" data-type="zone">
+            <span class="auth-type-card-icon">🗺️</span>
+            <div class="auth-type-card-title">Zona geográfica</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── LOGIN FORM ──────────────────────────── -->
+      <div id="section-login">
+        <form id="form-login" style="display:flex;flex-direction:column;gap:var(--space-md)">
+          <div class="form-group">
+            <label class="form-label">Correo electrónico</label>
+            <div class="input-group">
+              <i class="fas fa-envelope input-icon"></i>
+              <input type="email" class="form-control" name="email" placeholder="tu@correo.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <label class="form-label">Contraseña</label>
+              <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div class="password-wrap input-group">
+              <i class="fas fa-lock input-icon"></i>
+              <input type="password" class="form-control" name="password" placeholder="••••••••" required autocomplete="current-password" id="login-password">
+              <button type="button" class="password-toggle" data-toggle-password="#login-password">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="remember-me" name="remember">
+            <label for="remember-me">Recordarme en este dispositivo</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:var(--space-sm)">
+            <i class="fas fa-sign-in-alt"></i> Ingresar
+          </button>
+        </form>
+
+        <div class="form-divider"><span>o continúa con</span></div>
+        <div class="social-auth">
+          <button class="social-auth-btn" onclick="Toast.show('Próximamente disponible','info')">
+            <img src="https://www.google.com/favicon.ico" width="16" alt="Google"> Google
+          </button>
+          <button class="social-auth-btn" onclick="Toast.show('Próximamente disponible','info')">
+            <i class="fab fa-microsoft" style="color:#00a4ef"></i> Microsoft
+          </button>
+        </div>
+
+        <p style="text-align:center;margin-top:var(--space-xl);font-size:0.875rem;color:var(--text-muted)">
+          ¿Aún no tienes cuenta?
+          <button onclick="document.getElementById('mode-register').click()" style="background:none;border:none;color:var(--green-600);font-weight:700;cursor:pointer;font-size:inherit">
+            Regístrate gratis
+          </button>
+        </p>
+      </div>
+
+      <!-- ─── REGISTER FORM ───────────────────────── -->
+      <div id="section-register" style="display:none">
+        <form id="form-register" style="display:flex;flex-direction:column;gap:var(--space-md)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)">
+            <div class="form-group">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="first_name" placeholder="Juan" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Apellido</label>
+              <input type="text" class="form-control" name="last_name" placeholder="Pérez" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Correo electrónico</label>
+            <div class="input-group">
+              <i class="fas fa-envelope input-icon"></i>
+              <input type="email" class="form-control" name="email" placeholder="tu@correo.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contraseña</label>
+            <div class="password-wrap input-group">
+              <i class="fas fa-lock input-icon"></i>
+              <input type="password" class="form-control" name="password" placeholder="Mínimo 6 caracteres" required id="reg-password">
+              <button type="button" class="password-toggle" data-toggle-password="#reg-password">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirmar contraseña</label>
+            <div class="password-wrap input-group">
+              <i class="fas fa-lock input-icon"></i>
+              <input type="password" class="form-control" name="password2" placeholder="Repite tu contraseña" required id="reg-password2">
+              <button type="button" class="password-toggle" data-toggle-password="#reg-password2">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic fields based on account type -->
+          <div id="extra-fields" style="display:flex;flex-direction:column;gap:var(--space-md)">
+            <div style="background:var(--green-50);border:1px dashed var(--green-300);border-radius:var(--radius-md);padding:var(--space-lg);text-align:center;color:var(--green-700);font-size:0.875rem">
+              <i class="fas fa-hand-pointer"></i> Selecciona el tipo de cuenta arriba para ver los campos adicionales
+            </div>
+          </div>
+
+          <div class="form-check" style="flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:flex-start;gap:var(--space-sm)">
+              <input type="checkbox" id="accept-terms" name="terms" required>
+              <label for="accept-terms">Acepto los <a href="#">Términos de Uso</a> y la <a href="#">Política de Privacidad</a> de HambreZero</label>
+            </div>
+            <div style="background:#fff5f5;border:1px solid #fc8181;border-radius:var(--radius-md);padding:var(--space-md);font-size:0.75rem;color:#c53030;display:flex;align-items:flex-start;gap:8px;margin-top:4px;box-shadow:var(--shadow-xs)">
+              <i class="fas fa-exclamation-triangle" style="margin-top:2px;font-size:0.85rem"></i>
+              <div style="line-height:1.5">
+                <strong style="font-weight:800;display:block;margin-bottom:2px">⚠️ Alerta legal y antifraude</strong>
+                La suplantación de identidad o la publicación falsa de necesidades para lucrarse es un delito tipificado (Estafa Agravada - Art. 246 C.P.). Toda información será validada. Cualquier intento de fraude será denunciado inmediatamente a la Fiscalía General de la Nación y acarreará penas de prisión y multas severas.
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:var(--space-sm)">
+            <i class="fas fa-user-plus"></i> Crear mi cuenta
+          </button>
+        </form>
+
+        <p style="text-align:center;margin-top:var(--space-xl);font-size:0.875rem;color:var(--text-muted)">
+          ¿Ya tienes cuenta?
+          <button onclick="document.getElementById('mode-login').click()" style="background:none;border:none;color:var(--green-600);font-weight:700;cursor:pointer;font-size:inherit">
+            Inicia sesión
+          </button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros — HambreZero</title>
+  <meta name="description" content="Conoce la historia, misión, equipo y valores detrás de HambreZero, la plataforma colombiana que conecta recursos con quienes más los necesitan.">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ─ Page hero ─ */
+    .about-hero {
+      background: linear-gradient(135deg, #051f17 0%, #0a3526 50%, #116644 100%);
+      padding: calc(var(--navbar-h) + var(--space-4xl)) 0 var(--space-4xl);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 80%, rgba(92,212,157,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 20%, rgba(240,165,0,0.12) 0%, transparent 50%);
+    }
+    .about-hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .about-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900; color: white;
+      margin-bottom: var(--space-xl);
+    }
+    .about-hero h1 span { color: var(--gold-300); }
+    .about-hero-lead { font-size: 1.15rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: var(--space-2xl); }
+
+    /* ─ Floating shapes ─ */
+    .shape { position: absolute; border-radius: 50%; animation: float 6s ease-in-out infinite; }
+    .shape-1 { width: 300px; height: 300px; background: rgba(255,255,255,0.03); top: -50px; right: -100px; animation-delay: 0s; }
+    .shape-2 { width: 200px; height: 200px; background: rgba(240,165,0,0.06); bottom: -80px; left: -80px; animation-delay: 2s; }
+    .shape-3 { width: 150px; height: 150px; background: rgba(92,212,157,0.05); top: 40%; right: 5%; animation-delay: 4s; }
+
+    /* ─ Mission / Vision ─ */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-2xl);
+    }
+    .mv-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .mv-card.mission::before { background: linear-gradient(90deg, var(--green-600), var(--green-400)); }
+    .mv-card.vision::before  { background: linear-gradient(90deg, var(--gold-500), var(--gold-300)); }
+    .mv-icon { font-size: 2.5rem; margin-bottom: var(--space-md); }
+    .mv-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: var(--space-md); }
+    .mv-desc { font-size: 0.95rem; color: var(--gray-700); line-height: 1.8; }
+
+    /* ─ Values ─ */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    .value-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      transition: var(--transition-spring);
+    }
+    .value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--green-300); }
+    .value-icon {
+      width: 64px; height: 64px;
+      border-radius: var(--radius-xl);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem;
+      margin: 0 auto var(--space-lg);
+    }
+    .value-name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: var(--space-sm); }
+    .value-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ─ Story ─ */
+    .story-section {
+      background: linear-gradient(135deg, var(--green-950), var(--green-900));
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+    .story-text h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: white; margin-bottom: var(--space-lg); }
+    .story-text h2 span { color: var(--gold-300); }
+    .story-text p { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.9; margin-bottom: var(--space-md); }
+    .story-milestones { display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-xl); }
+    .milestone {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+    .milestone-dot {
+      width: 10px; height: 10px;
+      background: var(--gold-400);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .milestone-text { font-size: 0.875rem; color: rgba(255,255,255,0.75); }
+    .milestone-year { font-weight: 700; color: var(--gold-300); margin-right: 6px; }
+    .story-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+    .story-stat-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      text-align: center;
+    }
+    .story-stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--gold-300); }
+    .story-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-top: 4px; }
+
+    /* ─ Team ─ */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+    }
+    .team-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      text-align: center;
+      transition: var(--transition-spring);
+    }
+    .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+    .team-avatar {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .team-info { padding: var(--space-lg); }
+    .team-name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .team-role { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; margin-bottom: var(--space-md); }
+    .team-socials { display: flex; gap: var(--space-sm); justify-content: center; }
+    .team-social-btn {
+      width: 30px; height: 30px;
+      background: var(--gray-100);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      transition: var(--transition-base);
+      cursor: pointer; border: none;
+    }
+    .team-social-btn:hover { background: var(--green-100); color: var(--green-700); }
+
+    /* ─ Partners / Supporters ─ */
+    .partners-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2xl);
+      flex-wrap: wrap;
+    }
+    .partner-logo {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-lg) var(--space-xl);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gray-600);
+      transition: var(--transition-base);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      min-width: 140px;
+      justify-content: center;
+    }
+    .partner-logo:hover { border-color: var(--green-400); color: var(--green-700); box-shadow: var(--shadow-md); }
+
+    /* ─ Contact ─ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-info-item:last-child { border-bottom: none; }
+    .contact-info-icon {
+      width: 40px; height: 40px;
+      background: var(--green-100);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green-700);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-info-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-info-value { font-weight: 600; color: var(--text); font-size: 0.95rem; margin-top: 2px; }
+
+    @media (max-width: 1024px) {
+      .mv-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .story-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .story-visual { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="page-loader"><div class="loader-logo"><div class="loader-spinner"></div>HambreZero</div></div>
+<div id="toast-container" class="toast-container"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="main-navbar">
+  <div class="navbar-brand">
+    <div class="brand-icon"><i class="fas fa-seedling"></i></div>
+    Hambre<span style="color:var(--gold-400)">Zero</span>
+  </div>
+  <div class="navbar-menu">
+    <a href="../index.html">Inicio</a>
+    <a href="dashboard-donor.html">Tablones</a>
+    <a href="map.html">Mapa</a>
+    <a href="ranking.html">Ranking</a>
+    <a href="about.html" class="active">Sobre Nosotros</a>
+    <a href="mobile-preview.html" style="color:var(--green-700); font-weight:700;"><i class="fas fa-mobile-alt"></i> Versión Móvil</a>
+  </div>
+  <div class="navbar-actions" id="nav-auth">
+    <a href="auth.html" class="btn btn-outline btn-sm">Iniciar sesión</a>
+    <a href="auth.html" class="btn btn-primary btn-sm">Crear cuenta</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════ -->
+<section class="about-hero">
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-3"></div>
+  <div class="container about-hero-content">
+    <div class="section-label" style="background:rgba(240,165,0,0.2);color:var(--gold-300);margin-bottom:var(--space-xl);display:inline-flex">
+      <i class="fas fa-heart"></i> Nuestra historia
+    </div>
+    <h1>Nacimos para acabar con<br><span>el hambre cero</span></h1>
+    <p class="about-hero-lead">
+      HambreZero es una plataforma colombiana fundada con la convicción de que la generosidad empresarial, bien dirigida, puede transformar realidades en los rincones más vulnerables de nuestra nación.
+    </p>
+    <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap">
+      <a href="auth.html" class="btn btn-accent btn-lg"><i class="fas fa-seedling"></i> Únete a la causa</a>
+      <a href="#contact" class="btn btn-white btn-lg"><i class="fas fa-envelope"></i> Contáctanos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MISSION & VISION ═══════════════════════════════ -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="text-center mb-2xl" data-reveal>
+      <div class="section-label"><i class="fas fa-compass"></i> Propósito</div>
+      <h2 class="section-title">Lo que nos mueve cada día</h2>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card mission" data-reveal>
+        <div class="mv-icon">🌱</div>
+        <div class="mv-title" style="color:var(--green-700)">Nuestra Misión</div>
+        <p class="mv-desc">
+          Facilitar la conexión directa, transparente y verificada entre empresas con capacidad de donar y entidades sociales con necesidades reales — eliminando barreras burocráticas y garantizando que cada peso llegue al lugar donde más se necesita.
+        </p>
+        <div style="margin-top:var(--space-lg)">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--green-700);margin-bottom:var(--space-sm)">Comprometidos con:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm)">
+            <span class="chip active">Transparencia</span>
+            <span class="chip active">Verificación</span>
+            <span class="chip active">Impacto real</span>
+            <span class="chip active">Accesibilidad</span>
+          </div>
+        </div>
+      </div>
+      <div class="mv-card vision" data-reveal>
+        <div class="mv-icon">🔭</div>
+        <div class="mv-title" style="color:var(--gold-600)">Nuestra Visión</div>
+        <p class="mv-desc">
+          Para 2030, ser la plataforma de impacto social más grande de Latinoamérica: donde ninguna entidad con necesidades quede invisible, ninguna zona rural quede sin voz, y cada empresa donante tenga la certeza de que su contribución es real, medible y reconocida por el gobierno.
+        </p>
+        <div style="margin-top:var(--space-lg)">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--gold-600);margin-bottom:var(--space-sm)">Meta 2030:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm)">
+            <span style="background:var(--gold-100);color:var(--gold-700);padding:4px 12px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:700">5M beneficiados</span>
+            <span style="background:var(--gold-100);color:var(--gold-700);padding:4px 12px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:700">10 países</span>
+            <span style="background:var(--gold-100);color:var(--gold-700);padding:4px 12px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:700">$1B donados</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VALUES ════════════════════════════════════════ -->
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="text-center mb-2xl" data-reveal>
+      <div class="section-label"><i class="fas fa-star"></i> Valores</div>
+      <h2 class="section-title">Los principios que nos guían</h2>
+      <p class="section-desc" style="margin:0 auto">Cada decisión que tomamos está guiada por estos seis valores fundamentales</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card" data-reveal>
+        <div class="value-icon" style="background:#dcfce7"><span>🤝</span></div>
+        <div class="value-name">Transparencia</div>
+        <p class="value-desc">Cada donación, acuerdo y necesidad publicada es verificable y trazable. Nada se esconde, todo se puede auditar.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-icon" style="background:#dbeafe"><span>⚡</span></div>
+        <div class="value-name">Efectividad</div>
+        <p class="value-desc">Conectamos recursos con necesidades reales en el menor tiempo posible, sin intermediarios innecesarios.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-icon" style="background:#fef3c7"><span>🌿</span></div>
+        <div class="value-name">Inclusión</div>
+        <p class="value-desc">Desde colegios en Bogotá hasta veredas en el Huila: ningún lugar ni institución queda fuera de nuestra cobertura.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-icon" style="background:#ede9fe"><span>🔒</span></div>
+        <div class="value-name">Confianza</div>
+        <p class="value-desc">Verificamos cada entidad registrada. Las empresas donan con la certeza de que su dinero llega a manos honestas.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-icon" style="background:#fee2e2"><span>💪</span></div>
+        <div class="value-name">Dignidad</div>
+        <p class="value-desc">Tratamos a cada comunidad vulnerada con respeto. Las necesidades se publican dignamente, no como caridad sino como derecho.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-icon" style="background:#dcfce7"><span>🚀</span></div>
+        <div class="value-name">Innovación</div>
+        <p class="value-desc">Usamos tecnología (mapas, datos, gamificación) para dar visibilidad a lo invisible y motivar a quienes pueden ayudar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STORY ═════════════════════════════════════════ -->
+<section class="section story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text" data-reveal>
+        <div class="section-label" style="background:rgba(240,165,0,0.2);color:var(--gold-300)"><i class="fas fa-book-open"></i> Historia</div>
+        <h2>De una vereda del<br><span>Huila al país entero</span></h2>
+        <p>
+          Todo comenzó en 2023 cuando nuestro fundador, visitando una escuela rural en el municipio de Garzón (Huila), encontró que 180 niños no tenían lápices con qué escribir — a menos de 4 horas de Bogotá.
+        </p>
+        <p>
+          El problema no era falta de recursos en el país: era falta de conexión. Empresas con millones para donar no sabían a dónde ir; entidades con necesidades urgentes no llegaban a ellas. HambreZero nació para cerrar esa brecha.
+        </p>
+        <p>
+          Hoy operamos en 22 departamentos, hemos facilitado más de $4.200 millones en donaciones y contamos con el respaldo del Ministerio de Hacienda para los certificados fiscales de los Top 5 donantes.
+        </p>
+        <div class="story-milestones">
+          <div class="milestone">
+            <div class="milestone-dot"></div>
+            <div class="milestone-text"><span class="milestone-year">2023</span> Primera conexión: Colegio El Jardín (Garzón, Huila) ↔ Empresa donante de Bogotá</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-dot"></div>
+            <div class="milestone-text"><span class="milestone-year">2024</span> Lanzamiento oficial. 120 entidades en 8 departamentos. $420M facilitados.</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-dot"></div>
+            <div class="milestone-text"><span class="milestone-year">2025</span> Acuerdo con Ministerio de Hacienda para beneficios tributarios.</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-dot"></div>
+            <div class="milestone-text"><span class="milestone-year">2026</span> 1,248 entidades · 342 empresas · $4.2B donados · Expansión a Latinoamérica.</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-visual" data-reveal>
+        <div class="story-stat-card">
+          <div class="story-stat-num" data-counter="4200000000" data-prefix="$">$0</div>
+          <div class="story-stat-label">Pesos facilitados en donaciones</div>
+        </div>
+        <div class="story-stat-card">
+          <div class="story-stat-num" data-counter="1248">0</div>
+          <div class="story-stat-label">Entidades activas y verificadas</div>
+        </div>
+        <div class="story-stat-card">
+          <div class="story-stat-num" data-counter="342">0</div>
+          <div class="story-stat-label">Empresas donantes registradas</div>
+        </div>
+        <div class="story-stat-card">
+          <div class="story-stat-num" data-counter="22">0</div>
+          <div class="story-stat-label">Departamentos de Colombia</div>
+        </div>
+        <div class="story-stat-card">
+          <div class="story-stat-num" data-counter="97">0</div>
+          <div class="story-stat-label">Zonas rurales sin cobertura mapeadas</div>
+        </div>
+        <div class="story-stat-card">
+          <div class="story-stat-num" data-counter="280000">0</div>
+          <div class="story-stat-label">Personas beneficiadas directamente</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ══════════════════════════════════════════ -->
+<section class="section" style="background:white">
+  <div class="container">
+    <div class="text-center mb-2xl" data-reveal>
+      <div class="section-label"><i class="fas fa-users"></i> El equipo</div>
+      <h2 class="section-title">Las personas detrás de HambreZero</h2>
+      <p class="section-desc" style="margin:0 auto">Un equipo diverso, apasionado y comprometido con el cambio social real</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card" data-reveal>
+        <div class="team-avatar" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">👨‍💼</div>
+        <div class="team-info">
+          <div class="team-name">Andrés Montoya</div>
+          <div class="team-role">Fundador & CEO</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:var(--space-md)">Economista de los Andes. 10 años en impacto social y tecnología cívica.</div>
+          <div class="team-socials">
+            <button class="team-social-btn" onclick="Toast.show('@andres.montoya','info')"><i class="fab fa-linkedin-in"></i></button>
+            <button class="team-social-btn" onclick="Toast.show('@andres_hz','info')"><i class="fab fa-twitter"></i></button>
+            <button class="team-social-btn" onclick="Toast.show('andres@hambrezero.co','info')"><i class="fas fa-envelope"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="team-card" data-reveal>
+        <div class="team-avatar" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">👩‍💻</div>
+        <div class="team-info">
+          <div class="team-name">Valentina Ríos</div>
+          <div class="team-role">CTO — Tecnología</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:var(--space-md)">Ingeniera de sistemas. Ex–Google. Especialista en plataformas de impacto.</div>
+          <div class="team-socials">
+            <button class="team-social-btn" onclick="Toast.show('@vale.rios','info')"><i class="fab fa-linkedin-in"></i></button>
+            <button class="team-social-btn" onclick="Toast.show('github.com/valrios','info')"><i class="fab fa-github"></i></button>
+            <button class="team-social-btn" onclick="Toast.show('vale@hambrezero.co','info')"><i class="fas fa-envelope"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="team-card" data-reveal>
+        <div class="team-avatar" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">👩‍⚖️</div>
+        <div class="team-info">
+          <div class="team-name">Isabela Gómez</div>
+          <div class="team-role">Directora Jurídica</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:var(--space-md)">Abogada especialista en derecho tributario y alianzas público-privadas.</div>
+          <div class="team-socials">
+            <button class="team-social-btn" onclick="Toast.show('@isa.gomez','info')"><i class="fab fa-linkedin-in"></i></button>
+            <button class="team-social-btn" onclick="Toast.show('isa@hambrezero.co','info')"><i class="fas fa-envelope"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="team-card" data-reveal>
+        <div class="team-avatar" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">👨‍🎨</div>
+        <div class="team-info">
+          <div class="team-name">Sebastián Trujillo</div>
+          <div class="team-role">Director de Diseño</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:var(--space-md)">Diseñador UX/UI. 8 años creando experiencias digitales con propósito.</div>
+          <div class="team-socials">
+            <button class="team-social-btn" onclick="Toast.show('@seba.trujillo','info')"><i class="fab fa-linkedin-in"></i></button>
+            <button class="team-social-btn" onclick="Toast.show('@seba_design','info')"><i class="fab fa-instagram"></i></button>
+            <button class="team-social-btn" onclick="Toast.show('seba@hambrezero.co','info')"><i class="fas fa-envelope"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTNERS ══════════════════════════════════════ -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="text-center mb-2xl" data-reveal>
+      <div class="section-label"><i class="fas fa-handshake"></i> Aliados</div>
+      <h2 class="section-title">Quienes nos respaldan</h2>
+    </div>
+    <div class="partners-strip" data-reveal>
+      <div class="partner-logo"><i class="fas fa-university" style="color:var(--green-600)"></i>Min. Hacienda</div>
+      <div class="partner-logo"><i class="fas fa-globe" style="color:#0057a8"></i>ICETEX</div>
+      <div class="partner-logo"><i class="fas fa-heartbeat" style="color:#e53e3e"></i>Cruz Roja Colombia</div>
+      <div class="partner-logo"><i class="fas fa-seedling" style="color:var(--green-600)"></i>Prosperidad Social</div>
+      <div class="partner-logo"><i class="fas fa-building" style="color:var(--gold-500)"></i>Confecámaras</div>
+      <div class="partner-logo"><i class="fas fa-graduation-cap" style="color:#805ad5"></i>Uniandes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══════════════════════════════════════ -->
+<section class="section" style="background:white" id="contact">
+  <div class="container">
+    <div class="text-center mb-2xl" data-reveal>
+      <div class="section-label"><i class="fas fa-envelope"></i> Contacto</div>
+      <h2 class="section-title">¿Tienes preguntas? Hablemos</h2>
+      <p class="section-desc" style="margin:0 auto">Estamos aquí para ayudarte a dar el primer paso hacia el impacto</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Contact info -->
+      <div data-reveal>
+        <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:var(--space-xl)">Información de contacto</h3>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-info-label">Sede principal</div>
+            <div class="contact-info-value">Cra. 7 #72-41, Bogotá D.C., Colombia<br><span style="font-size:0.85rem;color:var(--text-muted)">Oficina de atención: Lunes–Viernes, 8am–5pm</span></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-info-label">Teléfono</div>
+            <div class="contact-info-value">+57 (1) 742 0801</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-info-label">Correo general</div>
+            <div class="contact-info-value">hola@hambrezero.co</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-building"></i></div>
+          <div>
+            <div class="contact-info-label">Alianzas corporativas</div>
+            <div class="contact-info-value">empresas@hambrezero.co</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fab fa-instagram"></i></div>
+          <div>
+            <div class="contact-info-label">Redes sociales</div>
+            <div class="contact-info-value">@hambrezero.co</div>
+          </div>
+        </div>
+        <div style="margin-top:var(--space-xl)">
+          <div style="font-size:0.875rem;font-weight:700;color:var(--gray-700);margin-bottom:var(--space-md)">Síguenos</div>
+          <div style="display:flex;gap:var(--space-sm)">
+            <button style="width:40px;height:40px;background:var(--green-100);border-radius:var(--radius-md);border:none;color:var(--green-700);cursor:pointer;font-size:1rem" onclick="Toast.show('@hambrezero.co en Instagram','info')">
+              <i class="fab fa-instagram"></i>
+            </button>
+            <button style="width:40px;height:40px;background:var(--blue-100);border-radius:var(--radius-md);border:none;color:#0057a8;cursor:pointer;font-size:1rem" onclick="Toast.show('HambreZero en LinkedIn','info')">
+              <i class="fab fa-linkedin-in"></i>
+            </button>
+            <button style="width:40px;height:40px;background:var(--gray-100);border-radius:var(--radius-md);border:none;color:var(--gray-700);cursor:pointer;font-size:1rem" onclick="Toast.show('@hambrezero en Twitter','info')">
+              <i class="fab fa-twitter"></i>
+            </button>
+            <button style="width:40px;height:40px;background:var(--blue-100);border-radius:var(--radius-md);border:none;color:#3b5998;cursor:pointer;font-size:1rem" onclick="Toast.show('HambreZero en Facebook','info')">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div data-reveal>
+        <div style="background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--radius-2xl);padding:var(--space-2xl)">
+          <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin-bottom:var(--space-xl)">Envíanos un mensaje</h3>
+          <form id="contact-form" style="display:flex;flex-direction:column;gap:var(--space-md)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)">
+              <div class="form-group">
+                <label class="form-label">Nombre *</label>
+                <input type="text" class="form-control" placeholder="Tu nombre" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Empresa</label>
+                <input type="text" class="form-control" placeholder="Tu empresa">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Correo electrónico *</label>
+              <div class="input-group">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" class="form-control" placeholder="tu@correo.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">¿Motivo del contacto? *</label>
+              <select class="form-control form-select" required>
+                <option value="">Selecciona una opción</option>
+                <option>Quiero registrar mi empresa como donante</option>
+                <option>Quiero registrar mi institución</option>
+                <option>Tengo preguntas sobre los beneficios fiscales</option>
+                <option>Propuesta de alianza</option>
+                <option>Prensa y medios</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mensaje *</label>
+              <textarea class="form-control" rows="4" placeholder="Cuéntanos cómo podemos ayudarte..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              <i class="fas fa-paper-plane"></i> Enviar mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ══════════════════════════════════════ -->
+<section style="background:linear-gradient(135deg,var(--gold-500),var(--gold-300));padding:var(--space-3xl) 0;text-align:center">
+  <div class="container">
+    <div style="font-size:2.5rem;margin-bottom:var(--space-md)">🌱</div>
+    <h2 style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--gray-900);margin-bottom:var(--space-md)">Sé parte del cambio</h2>
+    <p style="font-size:1.05rem;color:var(--gray-700);max-width:500px;margin:0 auto var(--space-2xl)">
+      Ya seas una empresa, una institución o una comunidad, hay un lugar para ti en HambreZero.
+    </p>
+    <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap">
+      <a href="auth.html" class="btn btn-primary btn-xl"><i class="fas fa-user-plus"></i> Crear cuenta gratis</a>
+      <a href="dashboard-donor.html" class="btn btn-outline btn-xl" style="border-color:var(--gray-800);color:var(--gray-900)"><i class="fas fa-th"></i> Ver tablones</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--green-950);color:rgba(255,255,255,0.7);padding:var(--space-xl) 0;text-align:center">
+  <div class="container">
+    <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:900;color:white;margin-bottom:var(--space-sm)">
+      Hambre<span style="color:var(--gold-400)">Zero</span>
+    </div>
+    <p style="font-size:0.85rem">© 2026 HambreZero · Hecho con 💚 para Colombia</p>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script>
+  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    Toast.show('¡Mensaje enviado! Te responderemos en menos de 24 horas 📩', 'success', 5000);
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

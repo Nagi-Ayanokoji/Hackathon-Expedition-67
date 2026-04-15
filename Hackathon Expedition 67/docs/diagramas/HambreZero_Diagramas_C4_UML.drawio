@@ -1,0 +1,577 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="29.6.4" pages="6">
+  <diagram id="c4-context" name="C4 - 1. Contexto">
+    <mxGraphModel dx="1310" dy="848" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctx-title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" value="&lt;b&gt;C4 Nivel 1 — Diagrama de Contexto del Sistema&lt;/b&gt;&lt;br&gt;HambreZero: Plataforma colombiana de impacto social" vertex="1">
+          <mxGeometry height="50" width="560" x="420" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-sys" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#116644;fontColor=#ffffff;strokeColor=#0f5035;align=center;fontSize=11;" value="&lt;b&gt;HambreZero&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;Plataforma web que conecta empresas donantes con entidades sociales necesitadas y zonas rurales sin cobertura. Gestiona tablones de necesidades, ranking de donantes, mapa geolocalizado y certificados de beneficios tributarios." vertex="1">
+          <mxGeometry height="180" width="340" x="520" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-leaflet" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64748b;fontColor=#ffffff;strokeColor=#475569;align=center;fontSize=10;" value="&lt;b&gt;Leaflet.js / OpenStreetMap&lt;/b&gt;&lt;br&gt;[Sistema Externo]&lt;br&gt;&lt;br&gt;Proveedor de mapas interactivos y tiles cartográficos (CARTO)." vertex="1">
+          <mxGeometry height="110" width="240" x="80" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-pay" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64748b;fontColor=#ffffff;strokeColor=#475569;align=center;fontSize=10;" value="&lt;b&gt;Pasarela de Pagos&lt;/b&gt;&lt;br&gt;[Sistema Externo]&lt;br&gt;&lt;br&gt;Procesamiento de transacciones bancarias y tarjetas de crédito." vertex="1">
+          <mxGeometry height="100" width="220" x="320" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-dian" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64748b;fontColor=#ffffff;strokeColor=#475569;align=center;fontSize=10;" value="&lt;b&gt;DIAN / MinHacienda&lt;/b&gt;&lt;br&gt;[Sistema Externo]&lt;br&gt;&lt;br&gt;Autoridad tributaria colombiana que valida certificados y reducciones fiscales." vertex="1">
+          <mxGeometry height="100" width="220" x="840" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-font" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64748b;fontColor=#ffffff;strokeColor=#475569;align=center;fontSize=10;" value="&lt;b&gt;Google Fonts / CDNs&lt;/b&gt;&lt;br&gt;[Sistema Externo]&lt;br&gt;&lt;br&gt;Font Awesome icons, tipografías Inter/Outfit." vertex="1">
+          <mxGeometry height="90" width="200" x="80" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-c1" edge="1" parent="1" style="endArrow=classic;html=1;fontSize=9;entryX=1;entryY=0.3;entryDx=0;entryDy=0;" target="ctx-sys" value="Publica necesidades,&lt;br&gt;gestiona perfil,&lt;br&gt;recibe donaciones">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1160" y="351.8571428571429" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-c2" edge="1" parent="1" style="endArrow=classic;html=1;fontSize=9;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" target="ctx-sys" value="Visualiza tablones,&lt;br&gt;dona dinero/materiales,&lt;br&gt;crea acuerdos,&lt;br&gt;descarga certificados">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="294.625" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-c3" edge="1" parent="1" style="endArrow=classic;html=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ctx-sys" value="Registra zona,&lt;br&gt;publica necesidades,&lt;br&gt;aparece en mapa">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="690" y="220" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-c4" edge="1" parent="1" style="endArrow=classic;html=1;fontSize=9;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" target="ctx-sys" value="Verifica rankings,&lt;br&gt;aprueba certificados">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1060" y="518.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-c5" edge="1" parent="1" source="ctx-leaflet" style="endArrow=classic;html=1;fontSize=9;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="ctx-sys" value="Renderiza mapa&lt;br&gt;interactivo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-c6" edge="1" parent="1" source="ctx-pay" style="endArrow=classic;html=1;fontSize=9;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.3;entryY=1;entryDx=0;entryDy=0;" target="ctx-sys" value="Procesa&lt;br&gt;transacciones">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-c7" edge="1" parent="1" source="ctx-dian" style="endArrow=classic;html=1;fontSize=9;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.7;entryY=1;entryDx=0;entryDy=0;" target="ctx-sys" value="Valida certificados&lt;br&gt;y reducciones fiscales">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="Zona Geográfica&#xa;" c4Type="Person" c4Description="Representante de vereda, corregimiento o inspección rural sin instituciones que se registra en el mapa para obtener visibilidad." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="Do0TtNX4jqrXj6UI0xLz-2">
+          <mxCell parent="1" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];resizable=0;" vertex="1">
+            <mxGeometry height="180" width="200" x="590" y="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Empresa Donante" c4Type="Person" c4Description="Empresa que dona dinero o materiales a entidades necesitadas, aparece en ranking y obtiene beneficios fiscales." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="Do0TtNX4jqrXj6UI0xLz-4">
+          <mxCell parent="1" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];resizable=0;" vertex="1">
+            <mxGeometry height="180" width="200" x="130" y="130" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Entidad Necesitada " c4Type="Person" c4Description="&#xa;Colegio, hospital, comedor comunitario u otra institución que publica necesidades en tablones públicos y recibe donaciones." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="Do0TtNX4jqrXj6UI0xLz-6">
+          <mxCell parent="1" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];resizable=0;" vertex="1">
+            <mxGeometry height="180" width="200" x="1150" y="220" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Auditor / Gobierno" c4Type="Person" c4Description="MinHacienda o DIAN: verifica rankings y aprueba certificados tributarios para Top 5." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="Do0TtNX4jqrXj6UI0xLz-8">
+          <mxCell parent="1" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];resizable=0;" vertex="1">
+            <mxGeometry height="180" width="200" x="1060" y="420" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="c4-container" name="C4 - 2. Contenedores">
+    <mxGraphModel dx="1310" dy="848" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ct-title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" value="&lt;b&gt;C4 Nivel 2 — Diagrama de Contenedores&lt;/b&gt;&lt;br&gt;HambreZero System Boundary" vertex="1">
+          <mxGeometry height="50" width="440" x="480" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-boundary" parent="1" style="shape=swimlane;whiteSpace=wrap;html=1;dashed=1;startSize=30;fillColor=none;strokeColor=#116644;strokeWidth=2;fontSize=12;" value="&lt;b&gt;Sistema HambreZero&lt;/b&gt; [System Boundary]" vertex="1">
+          <mxGeometry height="700" width="1100" x="200" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-spa" parent="ct-boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;align=center;fontSize=10;" value="&lt;b&gt;Web Application (SPA)&lt;/b&gt;&lt;br&gt;[Container: HTML5 / CSS3 / JavaScript ES6+]&lt;br&gt;&lt;br&gt;10 páginas estáticas con UI interactiva, animaciones, sistema de componentes CSS custom properties, modales, toasts. Incluye Leaflet.js para mapas." vertex="1">
+          <mxGeometry height="100" width="460" x="50" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-css" parent="ct-boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;align=center;fontSize=10;" value="&lt;b&gt;Design System&lt;/b&gt;&lt;br&gt;[Container: CSS / Custom Properties]&lt;br&gt;&lt;br&gt;styles.css: Design tokens, componentes reutilizables (buttons, cards, badges, modals, progress bars), responsive." vertex="1">
+          <mxGeometry height="100" width="460" x="610" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-appjs" parent="ct-boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;align=center;fontSize=10;" value="&lt;b&gt;app.js — Core Logic&lt;/b&gt;&lt;br&gt;[Container: JavaScript]&lt;br&gt;&lt;br&gt;Estado global (AppState), datos mock, sistema Toast/Modal, contadores animados, scroll reveal, render de bulletin cards y rank cards." vertex="1">
+          <mxGeometry height="120" width="300" x="50" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-authjs" parent="ct-boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;align=center;fontSize=10;" value="&lt;b&gt;auth.js — Autenticación&lt;/b&gt;&lt;br&gt;[Container: JavaScript]&lt;br&gt;&lt;br&gt;Login/Registro mock con localStorage, formularios dinámicos por tipo de cuenta, validación de campos, toggle password." vertex="1">
+          <mxGeometry height="120" width="300" x="400" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-mapjs" parent="ct-boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;align=center;fontSize=10;" value="&lt;b&gt;map.js — Mapa Interactivo&lt;/b&gt;&lt;br&gt;[Container: JavaScript + Leaflet.js]&lt;br&gt;&lt;br&gt;Inicializa Leaflet, marcadores de zonas e instituciones, popups interactivos, panel lateral, capas toggleables, búsqueda." vertex="1">
+          <mxGeometry height="120" width="300" x="750" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-ls" parent="ct-boundary" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#1e293b;fontColor=#ffffff;strokeColor=#0f172a;align=center;fontSize=10;" value="&lt;b&gt;localStorage&lt;/b&gt;&lt;br&gt;[Container: Browser Storage]&lt;br&gt;&lt;br&gt;Persiste sesión de usuario (hz_user) con tipo de cuenta y datos básicos." vertex="1">
+          <mxGeometry height="130" width="200" x="80" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-api" parent="ct-boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64748b;fontColor=#ffffff;strokeColor=#475569;align=center;fontSize=10;dashed=1;" value="&lt;b&gt;API Backend&lt;/b&gt;&lt;br&gt;[Container: Node.js / Express]&lt;br&gt;&lt;i&gt;(Planificado — Sprint futuro)&lt;/i&gt;&lt;br&gt;&lt;br&gt;REST API para auth, CRUD tablones, donaciones, ranking." vertex="1">
+          <mxGeometry height="120" width="280" x="390" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-db" parent="ct-boundary" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#64748b;fontColor=#ffffff;strokeColor=#475569;align=center;fontSize=10;dashed=1;" value="&lt;b&gt;Base de Datos&lt;/b&gt;&lt;br&gt;[Container: PostgreSQL]&lt;br&gt;&lt;i&gt;(Planificado)&lt;/i&gt;&lt;br&gt;&lt;br&gt;Usuarios, donaciones, tablones, certificados." vertex="1">
+          <mxGeometry height="130" width="200" x="770" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-redis" parent="ct-boundary" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#cc0000;fontColor=#ffffff;strokeColor=#990000;align=center;fontSize=10;dashed=1;" value="&lt;b&gt;Cache Ranking&lt;/b&gt;&lt;br&gt;[Container: Redis]&lt;br&gt;&lt;i&gt;(Planificado)&lt;/i&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="770" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="ct-users" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" value="&lt;b&gt;Usuarios&lt;/b&gt;&lt;br&gt;(Donantes, Entidades, Zonas)" vertex="1">
+          <mxGeometry height="80" width="40" x="60" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct1" edge="1" parent="1" source="ct-users" style="endArrow=classic;html=1;fontSize=9;" target="ct-spa" value="HTTPS / Navegador">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct2" edge="1" parent="1" source="ct-spa" style="endArrow=classic;html=1;fontSize=9;dashed=1;" target="ct-css" value="Importa estilos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct3" edge="1" parent="1" source="ct-spa" style="endArrow=classic;html=1;fontSize=9;" target="ct-appjs" value="Carga scripts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct4" edge="1" parent="1" source="ct-spa" style="endArrow=classic;html=1;fontSize=9;" target="ct-authjs" value="Auth page">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct5" edge="1" parent="1" source="ct-spa" style="endArrow=classic;html=1;fontSize=9;" target="ct-mapjs" value="Map page">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct6" edge="1" parent="1" source="ct-authjs" style="endArrow=classic;html=1;fontSize=9;" target="ct-ls" value="Persiste sesión">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct7" edge="1" parent="1" source="ct-appjs" style="endArrow=classic;html=1;fontSize=9;dashed=1;" target="ct-api" value="REST API (futuro)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-ct8" edge="1" parent="1" source="ct-api" style="endArrow=classic;html=1;fontSize=9;dashed=1;" target="ct-db" value="SQL (futuro)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="c4-components" name="C4 - 3. Componentes">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cp-title" value="&lt;b&gt;C4 Nivel 3 — Diagrama de Componentes&lt;/b&gt;&lt;br&gt;Desglose del Frontend SPA" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="480" y="20" width="440" height="50" as="geometry" />
+        </mxCell>
+        <!-- Páginas -->
+        <mxCell id="cp-pages" value="&lt;b&gt;Páginas HTML (Vistas)&lt;/b&gt;" style="shape=swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=#f5f5f5;strokeColor=#116644;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="700" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-index" value="&lt;b&gt;index.html&lt;/b&gt;&lt;br&gt;Landing Page&lt;br&gt;682 líneas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="20" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-auth" value="&lt;b&gt;auth.html&lt;/b&gt;&lt;br&gt;Login/Registro&lt;br&gt;389 líneas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="160" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-donor" value="&lt;b&gt;dashboard-donor&lt;/b&gt;&lt;br&gt;Panel Donante&lt;br&gt;456 líneas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="300" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-ent" value="&lt;b&gt;dashboard-entity&lt;/b&gt;&lt;br&gt;Panel Entidad&lt;br&gt;462 líneas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="440" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-map" value="&lt;b&gt;map.html&lt;/b&gt;&lt;br&gt;Mapa Interactivo&lt;br&gt;524 líneas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="580" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-rank" value="&lt;b&gt;ranking.html&lt;/b&gt;&lt;br&gt;Ranking Donantes&lt;br&gt;611 líneas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="20" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-about" value="&lt;b&gt;about.html&lt;/b&gt;&lt;br&gt;Sobre Nosotros&lt;br&gt;667 líneas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="160" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-mobile" value="&lt;b&gt;mobile-preview&lt;/b&gt;&lt;br&gt;Vista Móvil" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="300" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-pres" value="&lt;b&gt;presentacion&lt;/b&gt;&lt;br&gt;Presentación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22976e;fontColor=#ffffff;strokeColor=#177151;fontSize=9;" vertex="1" parent="cp-pages">
+          <mxGeometry x="440" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <!-- Componentes Shared (nav, footer, loader) -->
+        <mxCell id="cp-shared" value="&lt;b&gt;Componentes Compartidos&lt;/b&gt;&lt;br&gt;Navbar · Footer · Page Loader · Toast Container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#805ad5;fontColor=#ffffff;strokeColor=#6c3fc0;fontSize=10;" vertex="1" parent="cp-pages">
+          <mxGeometry x="20" y="210" width="660" height="50" as="geometry" />
+        </mxCell>
+        <!-- Componentes JS -->
+        <mxCell id="cp-jsbox" value="&lt;b&gt;Módulos JavaScript&lt;/b&gt;" style="shape=swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=#f5f5f5;strokeColor=#3182ce;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="780" y="80" width="500" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-toast" value="&lt;b&gt;Toast System&lt;/b&gt;&lt;br&gt;Notificaciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="20" y="40" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-modal" value="&lt;b&gt;Modal System&lt;/b&gt;&lt;br&gt;Diálogos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="170" y="40" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-state" value="&lt;b&gt;AppState&lt;/b&gt;&lt;br&gt;Estado Global" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="320" y="40" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-fmt" value="&lt;b&gt;fmt Utilities&lt;/b&gt;&lt;br&gt;Formateo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="20" y="110" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-counter" value="&lt;b&gt;Counter Anim&lt;/b&gt;&lt;br&gt;Contadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="170" y="110" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-reveal" value="&lt;b&gt;Scroll Reveal&lt;/b&gt;&lt;br&gt;Animaciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;fontColor=#ffffff;strokeColor=#2563a8;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="320" y="110" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-leaflet" value="&lt;b&gt;Leaflet Map&lt;/b&gt;&lt;br&gt;Mapa Interactivo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4940a;fontColor=#ffffff;strokeColor=#b37800;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="20" y="180" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-authmod" value="&lt;b&gt;Auth Module&lt;/b&gt;&lt;br&gt;Login/Registro" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4940a;fontColor=#ffffff;strokeColor=#b37800;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="170" y="180" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-bulletin" value="&lt;b&gt;Bulletin Render&lt;/b&gt;&lt;br&gt;Cards dinámicos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4940a;fontColor=#ffffff;strokeColor=#b37800;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="320" y="180" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-donations" value="&lt;b&gt;Donation Flow&lt;/b&gt;&lt;br&gt;Modal donación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4940a;fontColor=#ffffff;strokeColor=#b37800;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="20" y="250" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-ranking" value="&lt;b&gt;Ranking Engine&lt;/b&gt;&lt;br&gt;Podium + Cards" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4940a;fontColor=#ffffff;strokeColor=#b37800;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="170" y="250" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cp-cert" value="&lt;b&gt;Certificate Gen&lt;/b&gt;&lt;br&gt;Certificados" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4940a;fontColor=#ffffff;strokeColor=#b37800;fontSize=9;" vertex="1" parent="cp-jsbox">
+          <mxGeometry x="320" y="250" width="130" height="50" as="geometry" />
+        </mxCell>
+        <!-- CSS Box -->
+        <mxCell id="cp-cssbox" value="&lt;b&gt;Design System CSS (styles.css — 36KB)&lt;/b&gt;&lt;br&gt;CSS Custom Properties · Tokens · Componentes · Responsive · Dark accents · Glassmorphism" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e53e3e;fontColor=#ffffff;strokeColor=#c53030;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="460" width="1240" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uml-classes" name="UML - 4. Clases">
+    <mxGraphModel dx="3565" dy="1273" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uml-title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" value="&lt;b&gt;UML — Diagrama de Clases Completo&lt;/b&gt;&lt;br&gt;Modelo de dominio HambreZero" vertex="1">
+          <mxGeometry height="50" width="420" x="480" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="u-user" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#f0f9ff;strokeColor=#3182ce;strokeWidth=2;" value="&lt;b&gt;&lt;i&gt;&amp;lt;&amp;lt;Abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;User&lt;/b&gt;&#xa;──────────────────&#xa;+ id: UUID&#xa;+ email: String&#xa;+ passwordHash: String&#xa;+ firstName: String&#xa;+ lastName: String&#xa;+ phone: String&#xa;+ accountType: Enum&#xa;+ createdAt: DateTime&#xa;+ isVerified: Boolean&#xa;──────────────────&#xa;+ login(): Boolean&#xa;+ logout(): void&#xa;+ updateProfile(): void" vertex="1">
+          <mxGeometry height="250" width="240" x="550" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="u-donor" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#dcfce7;strokeColor=#116644;strokeWidth=2;" value="&lt;b&gt;DonorCompany&lt;/b&gt;&#xa;──────────────────&#xa;+ companyName: String&#xa;+ nit: String&#xa;+ sector: String&#xa;+ legalRep: String&#xa;+ totalDonated: Decimal&#xa;+ rankPoints: Integer&#xa;+ level: Enum(Bronze,Silver,Gold,Platinum)&#xa;+ rankPosition: Integer&#xa;──────────────────&#xa;+ makeDonation(amount, entityId): void&#xa;+ createAgreement(entityId): Agreement&#xa;+ getCurrentRank(): Integer&#xa;+ getFiscalCertificate(): Certificate&#xa;+ getLevel(): LevelEnum" vertex="1">
+          <mxGeometry height="270" width="300" x="60" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="u-entity" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#dcfce7;strokeColor=#116644;strokeWidth=2;" value="&lt;b&gt;NeedyEntity&lt;/b&gt;&#xa;──────────────────&#xa;+ entityName: String&#xa;+ documentId: String&#xa;+ entityType: Enum(School,Hospital...)&#xa;+ location: String&#xa;+ latitude: Float&#xa;+ longitude: Float&#xa;+ bankAccount: String&#xa;+ socialMedia: String&#xa;+ beneficiaryCount: Integer&#xa;+ totalReceived: Decimal&#xa;──────────────────&#xa;+ createBulletin(): Bulletin&#xa;+ updateProfile(): void&#xa;+ getReceivedHistory(): List" vertex="1">
+          <mxGeometry height="270" width="300" x="970" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="u-zrep" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#dcfce7;strokeColor=#116644;strokeWidth=2;" value="&lt;b&gt;ZoneRepresentative&lt;/b&gt;&#xa;──────────────────&#xa;+ zoneName: String&#xa;+ municipality: String&#xa;+ department: String&#xa;+ population: Integer&#xa;+ representativeName: String&#xa;+ mainNeeds: List&lt;String&gt;&#xa;──────────────────&#xa;+ registerZone(): void&#xa;+ publishNeeds(): void" vertex="1">
+          <mxGeometry height="190" width="260" x="380" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="u-donation" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#fef3c7;strokeColor=#d4940a;strokeWidth=2;" value="&lt;b&gt;DonationTransaction&lt;/b&gt;&#xa;──────────────────&#xa;+ transactionId: UUID&#xa;+ donorId: UUID&#xa;+ entityId: UUID&#xa;+ amountCOP: Decimal&#xa;+ donationType: Enum(Money,Material,Agreement)&#xa;+ paymentStatus: Enum(Pending,Completed,Failed)&#xa;+ message: String&#xa;+ date: DateTime&#xa;──────────────────&#xa;+ processPayment(): Boolean&#xa;+ generateReceipt(): Receipt&#xa;+ cancelTransaction(): void" vertex="1">
+          <mxGeometry height="230" width="310" x="410" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="u-bulletin" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#fef3c7;strokeColor=#d4940a;strokeWidth=2;" value="&lt;b&gt;Bulletin&lt;/b&gt;&#xa;──────────────────&#xa;+ bulletinId: UUID&#xa;+ entityId: UUID&#xa;+ title: String&#xa;+ description: String&#xa;+ needs: List&lt;String&gt;&#xa;+ urgency: Enum(High,Medium,Low)&#xa;+ urgencyScore: Integer&#xa;+ targetGoalCOP: Decimal&#xa;+ raisedCOP: Decimal&#xa;+ postedAt: DateTime&#xa;+ isFulfilled: Boolean&#xa;──────────────────&#xa;+ addFunds(amount): void&#xa;+ closeBulletin(): void&#xa;+ getProgress(): Float" vertex="1">
+          <mxGeometry height="270" width="280" x="810" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="u-zone" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#ede9fe;strokeColor=#805ad5;strokeWidth=2;" value="&lt;b&gt;GeoZone&lt;/b&gt;&#xa;──────────────────&#xa;+ zoneId: String&#xa;+ zoneName: String&#xa;+ department: String&#xa;+ population: Integer&#xa;+ latitude: Float&#xa;+ longitude: Float&#xa;+ needLevel: Enum(Critical,High,Medium,Low)&#xa;+ needs: List&lt;String&gt;&#xa;+ hasInstitutions: Boolean&#xa;──────────────────&#xa;+ calculateNeedScore(): Float&#xa;+ getMarkerColor(): String" vertex="1">
+          <mxGeometry height="220" width="260" x="1400" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="u-agreement" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#fef3c7;strokeColor=#d4940a;strokeWidth=2;" value="&lt;b&gt;Agreement&lt;/b&gt;&#xa;──────────────────&#xa;+ agreementId: UUID&#xa;+ donorId: UUID&#xa;+ entityId: UUID&#xa;+ type: Enum&#xa;+ value: Decimal&#xa;+ duration: String&#xa;+ startDate: Date&#xa;+ status: Enum(Active,Completed,Cancelled)&#xa;──────────────────&#xa;+ activate(): void&#xa;+ complete(): void" vertex="1">
+          <mxGeometry height="210" width="260" x="530" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="u-cert" parent="1" style="shape=umlClass;whiteSpace=wrap;html=1;align=left;spacingLeft=8;spacingRight=8;fillColor=#fee2e2;strokeColor=#e53e3e;strokeWidth=2;" value="&lt;b&gt;FiscalCertificate&lt;/b&gt;&#xa;──────────────────&#xa;+ certId: String&#xa;+ donorId: UUID&#xa;+ period: String&#xa;+ totalDonated: Decimal&#xa;+ level: LevelEnum&#xa;+ taxReduction: Float&#xa;+ issuedAt: DateTime&#xa;──────────────────&#xa;+ downloadPDF(): File&#xa;+ share(): URL" vertex="1">
+          <mxGeometry height="190" width="260" x="-100" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="r-h1" edge="1" parent="1" source="u-donor" style="endArrow=block;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-user" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-h2" edge="1" parent="1" source="u-entity" style="endArrow=block;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-user" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-h3" edge="1" parent="1" source="u-zrep" style="endArrow=block;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-user" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-c1" edge="1" parent="1" source="u-donation" style="endArrow=diamondThin;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-donor" value="1..* realiza">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-c2" edge="1" parent="1" source="u-bulletin" style="endArrow=diamondThin;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-entity" value="1..* crea">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-a1" edge="1" parent="1" source="u-donation" style="endArrow=open;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-bulletin" value="financia 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-a2" edge="1" parent="1" source="u-entity" style="endArrow=open;html=1;" target="u-zone" value="ubicado en">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-a3" edge="1" parent="1" source="u-donor" style="endArrow=open;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-cert" value="genera">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-a4" edge="1" parent="1" source="u-agreement" style="endArrow=open;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-donor" value="entre donante y entidad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r-a5" edge="1" parent="1" source="u-agreement" style="endArrow=open;html=1;edgeStyle=orthogonalEdgeStyle;" target="u-entity" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uml-usecases" name="UML - 5. Casos de Uso">
+    <mxGraphModel dx="1429" dy="925" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uc-title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" value="&lt;b&gt;UML — Diagrama de Casos de Uso&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="340" x="550" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-bound" parent="1" style="shape=swimlane;whiteSpace=wrap;html=1;dashed=1;startSize=30;fillColor=none;strokeColor=#116644;strokeWidth=2;fontSize=12;" value="Sistema HambreZero" vertex="1">
+          <mxGeometry height="860" width="800" x="350" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="uc1" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#116644;fontSize=10;" value="Registrar cuenta&lt;br&gt;(Entidad/Donante/Zona)" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uc2" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#116644;fontSize=10;" value="Iniciar sesión" vertex="1">
+          <mxGeometry height="50" width="200" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3182ce;fontSize=10;" value="Publicar necesidad&lt;br&gt;en tablón" vertex="1">
+          <mxGeometry height="60" width="200" x="520" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3182ce;fontSize=10;" value="Editar perfil&lt;br&gt;de entidad" vertex="1">
+          <mxGeometry height="50" width="200" x="520" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d4940a;fontSize=10;" value="Ver tablones de&lt;br&gt;necesidades" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="uc6" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d4940a;fontSize=10;" value="Realizar donación&lt;br&gt;(dinero/material)" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="uc7" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d4940a;fontSize=10;" value="Crear acuerdo&lt;br&gt;de donación" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="uc8" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#805ad5;fontSize=10;" value="Ver ranking&lt;br&gt;de donantes" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="uc9" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#805ad5;fontSize=10;" value="Descargar certificado&lt;br&gt;fiscal" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="uc10" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#e53e3e;fontSize=10;" value="Explorar mapa&lt;br&gt;interactivo" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="uc11" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#e53e3e;fontSize=10;" value="Filtrar y buscar&lt;br&gt;entidades" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="uc12" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3182ce;fontSize=10;" value="Registrar zona&lt;br&gt;geográfica en mapa" vertex="1">
+          <mxGeometry height="60" width="200" x="520" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="uc13" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d4940a;fontSize=10;" value="Crear acuerdo&lt;br&gt;de donación zonal" vertex="1">
+          <mxGeometry height="60" width="200" x="520" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="uc14" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3182ce;fontSize=10;" value="Ver historial&lt;br&gt;de donaciones recibidas" vertex="1">
+          <mxGeometry height="60" width="200" x="520" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="uc15" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#805ad5;fontSize=10;" value="Ver posición&lt;br&gt;en ranking" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="uc16" parent="uc-bound" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#116644;fontSize=10;" value="Enviar formulario&lt;br&gt;de contacto" vertex="1">
+          <mxGeometry height="60" width="200" x="520" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="act-donor" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" value="Empresa&lt;br&gt;Donante" vertex="1">
+          <mxGeometry height="80" width="40" x="120" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="act-entity" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" value="Entidad&lt;br&gt;Necesitada" vertex="1">
+          <mxGeometry height="80" width="40" x="1260" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="act-zone" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" value="Representante&lt;br&gt;Zona" vertex="1">
+          <mxGeometry height="80" width="40" x="1260" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="act-visitor" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" value="Visitante&lt;br&gt;Público" vertex="1">
+          <mxGeometry height="80" width="40" x="120" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r1" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r2" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;" target="uc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r3" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r4" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;" target="uc6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r5" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r6" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;" target="uc9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc-r7" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="uc15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r8" edge="1" parent="1" source="act-entity" style="endArrow=none;html=1;" target="uc1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1070" y="190" />
+              <mxPoint x="880" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc-r9" edge="1" parent="1" source="act-entity" style="endArrow=none;html=1;" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r10" edge="1" parent="1" source="act-entity" style="endArrow=none;html=1;" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r11" edge="1" parent="1" source="act-entity" style="endArrow=none;html=1;" target="uc14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r12" edge="1" parent="1" source="act-zone" style="endArrow=none;html=1;" target="uc12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-r13" edge="1" parent="1" source="act-visitor" style="endArrow=none;html=1;" target="uc8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="530" />
+              <mxPoint x="580" y="520" />
+              <mxPoint x="630" y="450" />
+              <mxPoint x="640" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc-r14" edge="1" parent="1" source="act-visitor" style="endArrow=none;html=1;" target="uc10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc-r15" edge="1" parent="1" source="act-visitor" style="endArrow=none;html=1;" target="uc11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc-r16" edge="1" parent="1" source="act-visitor" style="endArrow=none;html=1;" target="uc16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="640" />
+              <mxPoint x="700" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc-r17" edge="1" parent="1" source="act-donor" style="endArrow=none;html=1;" target="uc13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="350" />
+              <mxPoint x="700" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uml-sequence" name="UML - 6. Secuencia Donacion">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="seq-title" value="&lt;b&gt;UML — Diagrama de Secuencia: Flujo de Donación&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="420" y="20" width="500" height="40" as="geometry" />
+        </mxCell>
+        <!-- Lifelines -->
+        <mxCell id="ll-donor" value="&lt;b&gt;:Donante&lt;/b&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#dcfce7;strokeColor=#116644;" vertex="1" parent="1">
+          <mxGeometry x="100" y="70" width="100" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-spa" value="&lt;b&gt;:SPA&lt;/b&gt;&lt;br&gt;dashboard-donor" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#dbeafe;strokeColor=#3182ce;" vertex="1" parent="1">
+          <mxGeometry x="320" y="70" width="120" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-appjs" value="&lt;b&gt;:app.js&lt;/b&gt;&lt;br&gt;AppState" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#fef3c7;strokeColor=#d4940a;" vertex="1" parent="1">
+          <mxGeometry x="560" y="70" width="100" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-modal" value="&lt;b&gt;:Modal&lt;/b&gt;&lt;br&gt;Donación" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#ede9fe;strokeColor=#805ad5;" vertex="1" parent="1">
+          <mxGeometry x="780" y="70" width="100" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-toast" value="&lt;b&gt;:Toast&lt;/b&gt;&lt;br&gt;System" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#fee2e2;strokeColor=#e53e3e;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="70" width="100" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-entity" value="&lt;b&gt;:Entidad&lt;/b&gt;&lt;br&gt;Necesitada" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#dcfce7;strokeColor=#116644;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="70" width="100" height="850" as="geometry" />
+        </mxCell>
+        <!-- Messages -->
+        <mxCell id="m1" value="1. Navega a Tablones" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry x="0.02" relative="1" as="geometry">
+            <mxPoint x="150" y="150" as="sourcePoint" />
+            <mxPoint x="370" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2. renderBulletins()" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="190" as="sourcePoint" />
+            <mxPoint x="600" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3. return AppState.entities[]" style="endArrow=classic;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="230" as="sourcePoint" />
+            <mxPoint x="380" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4. Filtra por categoría/búsqueda" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="280" as="sourcePoint" />
+            <mxPoint x="370" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5. Click &#39;Donar&#39; en bulletin card" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="340" as="sourcePoint" />
+            <mxPoint x="370" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6. openDonationModal(entityId)" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="380" as="sourcePoint" />
+            <mxPoint x="600" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7. Recupera entity data" style="endArrow=classic;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="420" as="sourcePoint" />
+            <mxPoint x="820" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8. Modal.open() — Muestra formulario" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="460" as="sourcePoint" />
+            <mxPoint x="380" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9. Selecciona tipo e ingresa monto" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="510" as="sourcePoint" />
+            <mxPoint x="820" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10. Submit form-donate" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="560" as="sourcePoint" />
+            <mxPoint x="820" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="11. Modal.close()" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="610" as="sourcePoint" />
+            <mxPoint x="600" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m12" value="12. Toast.show(&#39;Donación registrada&#39;)" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="660" as="sourcePoint" />
+            <mxPoint x="1040" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m13" value="13. Notificación visual al usuario" style="endArrow=classic;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="710" as="sourcePoint" />
+            <mxPoint x="150" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m14" value="14. [Futuro] API registra donación en BD" style="endArrow=classic;html=1;fontSize=10;dashed=1;strokeColor=#999;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="770" as="sourcePoint" />
+            <mxPoint x="1260" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
